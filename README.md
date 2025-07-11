@@ -46,7 +46,7 @@ Visit: http://127.0.0.1:5000/Sector to test
 python dashboard.py
 ```
 
-Visit: (Visit: http://127.0.0.1:8050) to test
+Visit: http://127.0.0.1:8050 to test
 
 
 
