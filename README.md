@@ -29,8 +29,7 @@ This simple project is part of an assignment to build a financial dashboard. It 
 ### 1. Install dependencies
 
 ```bash
-pip
- install flask dash pandas plotly dash-mantine-components
+pip install flask dash pandas plotly dash-mantine-components
 ```
 
 ### 2. Start the API Server
