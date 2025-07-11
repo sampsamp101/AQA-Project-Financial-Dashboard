@@ -38,7 +38,7 @@ pip
 ```bash
 python main.py
 ```
-##Visit: http://127.0.0.1:5000/Sector to test
+Visit: http://127.0.0.1:5000/Sector to test
 
 ### 3. Run the dashboard (in an seperate Terminal)
 
@@ -46,7 +46,7 @@ python main.py
 python dashboard.py
 ```
 
-##Visit: (Visit: http://127.0.0.1:8050) to test
+Visit: (Visit: http://127.0.0.1:8050) to test
 
 
 
