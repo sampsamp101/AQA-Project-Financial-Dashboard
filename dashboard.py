@@ -4,8 +4,10 @@ from dash import html, dcc, Input, Output
 import dash_mantine_components as dmc
 import plotly.express as px
 from dash_mantine_components import MantineProvider
+from dash_iconify import DashIconify
 
 # Step A: Query sectors from your Flask API
+API = "http://127.0.0.1:5000/"
 SECTOR_API = "http://127.0.0.1:5000/Sector"
 EBITDA_API = "http://127.0.0.1:5000/EBITDA"
 
@@ -26,9 +28,16 @@ def get_ebitda(sector):
 # Step C + D: Create dashboard
 app = dash.Dash(__name__)
 
+# Additional Option to add download button
+download_btn = html.A(
+    dmc.Button("Download CSV", variant="outline"),
+    href=f"{API}DownloadCSV",
+    target="_blank",
+    style={"textDecoration": "none"}
+)
+
 app.layout = MantineProvider([
     html.H1("EBITDA Distribution by Sector"),
-
     dmc.MultiSelect(
         id="sector-select",
         label="Choose Sectors",
@@ -36,7 +45,7 @@ app.layout = MantineProvider([
         placeholder="Select one or more sectors",
         clearable=True
     ),
-
+    html.Div(download_btn, style={"margin": "12px 0"}),
     dcc.Graph(id="ebitda-pie")
 ])
 
@@ -57,6 +66,9 @@ def update_pie_chart(selected_sectors):
         title="EBITDA Distribution by Sector"
     )
     return fig
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

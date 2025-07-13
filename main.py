@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 import pandas as pd
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 
 app = Flask(__name__)
 
@@ -15,6 +15,18 @@ try:
 except Exception as e:
     print(f"❌ Error loading {csv_file}: {e}")
     df = pd.DataFrame()
+
+@app.route("/DownloadCSV", methods = ["GET"])
+def download_csv():
+    if df.empty:
+        return jsonify({"error": "CSV data not available"}), 500
+
+    return send_file(
+        csv_file,
+        mimetype= "text/csv",
+        as_attachment = True,
+        download_name="financial_data.csv"
+    )
 
 @app.route("/")
 def home():
